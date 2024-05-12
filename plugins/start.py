@@ -35,7 +35,7 @@ from shortzy import Shortzy
 
 """add time im seconds for waitingwaiting before delete 
 1min=60, 2min=60×2=120, 5min=60×5=300"""
-SECONDS = int(os.getenv("SECONDS", "1800"))
+SECONDS = int(os.getenv("SECONDS", "7200"))
 
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
@@ -128,7 +128,7 @@ async def start_command(client: Client, message: Message):
                 except:
                     pass
 
-            SD = await message.reply_text("Baka! Files will be deleted After 30 minutes. Save them to the Saved Message now!")
+            SD = await message.reply_text("Files will be deleted After 2 hours. Save them to the Saved Message now!")
             await asyncio.sleep(SECONDS)
 
             for snt_msg in snt_msgs:
@@ -161,7 +161,7 @@ async def start_command(client: Client, message: Message):
             verify_status = await get_verify_status(id)
             if IS_VERIFY and not verify_status['is_verified']:
                 short_url = f"api.shareus.io"
-                TUT_VID = f"https://t.me/How_to_Download_7x/32"
+                TUT_VID = f"https://t.me/Pleasure_Realm_Tutorial/3"
                 token = ''.join(random.choices(string.ascii_letters + string.digits, k=10))
                 await update_verify_status(id, verify_token=token, link="")
                 link = await get_shortlink(SHORTLINK_URL, SHORTLINK_API,f'https://telegram.dog/{client.username}?start=verify_{token}')
